@@ -10,6 +10,6 @@ node ('linux'){
     sh 'ant -f build.xml -v'
   }
   stage ('Deploy'){
-    sh 'aws s3 cp /workspace/java-pipeline/rectangle* s3://mickswartz-seis665/'
+    sh 'aws s3 cp /workspace/java-pipeline/dist/rectangle* s3://mickswartz-seis665/'
   }
 }
