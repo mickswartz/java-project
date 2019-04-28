@@ -13,7 +13,7 @@ node ('linux'){
     sh 'aws s3 cp /workspace/java-pipeline/dist/rectangle* s3://mickswartz-seis665/'
   }
   stage ('Report'){
-    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AKIAQRRRCEN5H5X4VF7L', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
+    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
       sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
     }
   }
